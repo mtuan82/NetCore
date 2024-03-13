@@ -1,0 +1,14 @@
+C:\NetCore\DataCore\bin\Debug\net7.0\DataCore.deps.json
+C:\NetCore\DataCore\bin\Debug\net7.0\DataCore.dll
+C:\NetCore\DataCore\bin\Debug\net7.0\DataCore.pdb
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.csproj.AssemblyReference.cache
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.AssemblyInfoInputs.cache
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.AssemblyInfo.cs
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.csproj.CoreCompileInputs.cache
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.dll
+C:\NetCore\DataCore\obj\Debug\net7.0\refint\DataCore.dll
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.pdb
+C:\NetCore\DataCore\obj\Debug\net7.0\ref\DataCore.dll
+C:\NetCore\DataCore\bin\Debug\net7.0\DataCore.runtimeconfig.json
+C:\NetCore\DataCore\obj\Debug\net7.0\DataCore.genruntimeconfig.cache
