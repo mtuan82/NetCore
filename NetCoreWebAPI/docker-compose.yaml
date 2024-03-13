@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  webapi:
+    container_name: "webapi"
+    image: webapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 80:443
+    entrypoint: dotnet NetCoreWebAPI.dll
+    
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:management
+    environment:
+        - RABBITMQ_DEFAULT_USER=rabbitmq
+        - RABBITMQ_DEFAULT_PASS=rabbit265
+    ports:
+        #Rabbitmq
+        - '5672:5672'
+        #Web management
+        - '15672:15672'
+
+  
