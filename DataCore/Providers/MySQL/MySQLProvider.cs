@@ -6,6 +6,7 @@ namespace DataCore.Providers.MySQL
     public class MySQLProvider: DbContext
     {
         public MySQLProvider() { }
+        public MySQLProvider(DbContextOptions<MySQLProvider> options) : base(options) { }
 
         public DbSet<Book> Book { get; set; }
 

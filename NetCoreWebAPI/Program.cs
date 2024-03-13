@@ -17,7 +17,7 @@ var env = new AppSettings(builder.Configuration);
 env.SetupEnv();
 
 //MongoDB Provider
-ConfigureMongoDB.SetupDatabase(builder.Services, env.);
+ConfigureMongoDB.SetupDatabase(builder.Services, env.MongoDB);
 
 //MYSQL Provider
 ConfigureMySQL.SetupDatabase(builder.Services, env.MysqlDB);
