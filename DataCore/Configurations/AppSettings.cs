@@ -12,6 +12,7 @@ namespace DataCore.Configurations
         public MySQLSettings MysqlDB { get; set; }
         public PostgreSQLSettings PostgresqlDB { get; set; }
         public MongoDBSettings MongoDB { get; set; }
+        public RedisSettings Redis { get; set; }
 
         public void SetupEnv()
         {
@@ -49,6 +50,13 @@ namespace DataCore.Configurations
                 Database = Configuration["Mongodb:Database"] ?? "",
                 UserName = Configuration["Mongodb:UserName"] ?? "",
                 Password = Configuration["Mongodb:Password"] ?? "",
+            };
+
+            Redis = new RedisSettings()
+            {
+                Host = Configuration["Redis:Host"] ?? "",
+                Port = Configuration["Redis:Port"] == null ? 6379:int.Parse(Configuration["Redis:Port"]),
+                PoolSize = Configuration["Redis:PoolSize"] == null ? 1: int.Parse(Configuration["Redis:PoolSize"])
             };
         }
         

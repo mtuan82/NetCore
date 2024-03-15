@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NetEscapades.Configuration.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataCore.Configurations
 {
-    internal class RedisSettings
+    public class RedisSettings : IValidatable
     {
+        public bool Enabled { get; set; } = true;
+
+        [Required]
+        public required string Host { get; set; }
+
+
+        public int Port { get; set; }
+
+        public int PoolSize { get; set; } = 20;
+
+        public void Validate()
+        {
+            Validator.ValidateObject(this, new ValidationContext(this), true);
+        }
     }
 }

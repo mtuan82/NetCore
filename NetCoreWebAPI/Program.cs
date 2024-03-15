@@ -33,9 +33,11 @@ builder.Services.AddDbContext<MSSQLProvider>(option =>
 builder.Services.AddDbContext<PostgreSQLProvider>(option =>
 {
     option.UseLazyLoadingProxies()
-            .UseNpgsql(builder.Configuration.Get<PostgreSQLSettings>()?.ConnectionString);
+            .UseNpgsql(env.PostgresqlDB.ConnectionString);
 }, ServiceLifetime.Singleton);
 
+//Redis 
+ConfigureRedis.RegisterRedis(builder.Services,env.Redis);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
