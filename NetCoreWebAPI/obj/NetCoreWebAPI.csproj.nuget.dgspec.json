@@ -4,14 +4,14 @@
     "C:\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\NetCore\\DataCore\\DataCore.csproj": {
+    "C:\\NetCore\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\NetCore\\DataCore\\DataCore.csproj",
-        "projectName": "DataCore",
-        "projectPath": "C:\\NetCore\\DataCore\\DataCore.csproj",
+        "projectUniqueName": "C:\\NetCore\\Core\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "C:\\NetCore\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\18507\\.nuget\\packages\\",
-        "outputPath": "C:\\NetCore\\DataCore\\obj\\",
+        "outputPath": "C:\\NetCore\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\18507\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -46,11 +51,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.16, )"
+              "version": "[7.0.17, )"
             },
             "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
-              "version": "[7.0.16, )"
+              "version": "[7.0.17, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
@@ -105,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -133,8 +138,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\NetCore\\DataCore\\DataCore.csproj": {
-                "projectPath": "C:\\NetCore\\DataCore\\DataCore.csproj"
+              "C:\\NetCore\\Core\\Core.csproj": {
+                "projectPath": "C:\\NetCore\\Core\\Core.csproj"
               }
             }
           }
@@ -143,6 +148,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -207,7 +217,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

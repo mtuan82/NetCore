@@ -1,4 +1,4 @@
-﻿using DataCore.Configurations;
+﻿using Core.Configurations;
 using StackExchange.Redis.Extensions.Core.Configuration;
 using StackExchange.Redis.Extensions.Newtonsoft;
 

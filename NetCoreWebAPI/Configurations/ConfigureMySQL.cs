@@ -1,5 +1,5 @@
-﻿using DataCore.Configurations;
-using DataCore.Providers.MySQL;
+﻿using Core.Configurations;
+using Core.Providers.MySQL;
 using Microsoft.EntityFrameworkCore;
 
 namespace NetCoreWebAPI.Configurations

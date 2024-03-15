@@ -1,6 +1,6 @@
-using DataCore.Configurations;
-using DataCore.Providers.MSSQL;
-using DataCore.Providers.PostgreSQL;
+using Core.Configurations;
+using Core.Providers.MSSQL;
+using Core.Providers.PostgreSQL;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;

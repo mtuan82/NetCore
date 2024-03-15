@@ -1,5 +1,5 @@
-﻿using DataCore.Configurations;
-using DataCore.Providers.MongoDB;
+﻿using Core.Configurations;
+using Core.Providers.MongoDB;
 
 namespace NetCoreWebAPI.Configurations
 {
