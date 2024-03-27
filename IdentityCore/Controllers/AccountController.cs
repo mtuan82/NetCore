@@ -32,9 +32,9 @@ namespace IdentityCore.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            var user = await userManager.FindByEmailAsync(model.UserName);
+            var user = await userManager.FindByEmailAsync(model.Email);
             if (user is not null)
-                return BadRequest("User registered already");
+                return BadRequest("Email registered already");
 
             var newUser = new IdentityCoreUser()
             {
@@ -43,8 +43,8 @@ namespace IdentityCore.Controllers
                 Email = model.Email,
                 PhoneNumber = model.PhoneNumber
             };
-            var result = userManager.CreateAsync(newUser, newUser.PasswordHash!);
-            if(!result.IsCompletedSuccessfully)
+            var result = await userManager.CreateAsync(newUser, newUser.PasswordHash!);
+            if(!result.Succeeded)
             {
                 return BadRequest("Internal Error. Please try again");
             }
@@ -78,7 +78,7 @@ namespace IdentityCore.Controllers
                 return BadRequest("Bad Request");
             }
 
-            var user = await userManager.FindByEmailAsync(model.UserName!);
+            var user = await userManager.FindByEmailAsync(model.Email!);
             if (user is null) { return BadRequest("User not Found"); }
 
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password!))
@@ -102,6 +102,12 @@ namespace IdentityCore.Controllers
             return BadRequest("Password incorrect");
         }
 
+        [HttpGet("Logout")]
+        public void Logout()
+        {
+            signInManager.SignOutAsync();
+        }
+
         private string GetToken(List<Claim> authClaims)
         {
             var secirutyKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JWT:SigningKey"]!));
@@ -113,12 +119,6 @@ namespace IdentityCore.Controllers
                 expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-        [HttpGet("Logout")]
-        public void Logout()
-        {
-            signInManager.SignOutAsync();
         }
     }
 }

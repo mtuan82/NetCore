@@ -6,7 +6,7 @@ services:
     image: webapi
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./webapiDocker
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:7070
