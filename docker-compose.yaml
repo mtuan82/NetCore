@@ -6,14 +6,29 @@ services:
     image: webapi
     build:
       context: .
-      dockerfile: ./webapiDocker
+      dockerfile: ./WebApiDockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:7070
     ports:
       - 7070:7070
     entrypoint: dotnet NetCoreWebAPI.dll
-    
+
+  identity:
+    container_name: "identity"
+    image: identity
+    build:
+      context: .
+      dockerfile: ./IdentityDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:6060
+    ports:
+      - 6060:6060
+    depends_on:
+      - mysql
+    entrypoint: dotnet IdentityCore.dll  
+
   rabbitmq:
     container_name: "rabbitmq"
     image: rabbitmq:management
@@ -33,3 +48,22 @@ services:
     ports:
         - 6379:6379
         - 8001:8001
+  
+  mysql:
+    container_name: "mysql"
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3336:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: dev_user
+      MYSQL_PASSWORD: navarre2245
+      MYSQL_DATABASE: identitycore
+  adminer:
+    container_name: "mysql_adminer"
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
