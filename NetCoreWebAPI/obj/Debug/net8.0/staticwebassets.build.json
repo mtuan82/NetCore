@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "a+R/lT0pu35flGuwE5emdVqq2o4WKudHntwBcCyqibA=",
+  "Source": "NetCoreWebAPI",
+  "BasePath": "_content/NetCoreWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -9,7 +9,7 @@ namespace NetCoreWebAPI.Configurations
         public static void SetupDatabase(this IServiceCollection services, MySQLSettings databaseSettings)
         {
             services.AddDbContext<MySQLProvider>(options =>
-                options.UseMySQL(databaseSettings.ConnectionString)
+                options.UseLazyLoadingProxies().UseMySQL(databaseSettings.ConnectionString)
              , ServiceLifetime.Singleton);
         }
     }

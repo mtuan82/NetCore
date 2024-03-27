@@ -128,3 +128,4 @@ C:\NetCore\NetCoreWebAPI\obj\Debug\net7.0\refint\NetCoreWebAPI.dll
 C:\NetCore\NetCoreWebAPI\obj\Debug\net7.0\NetCoreWebAPI.pdb
 C:\NetCore\NetCoreWebAPI\obj\Debug\net7.0\NetCoreWebAPI.genruntimeconfig.cache
 C:\NetCore\NetCoreWebAPI\obj\Debug\net7.0\ref\NetCoreWebAPI.dll
+C:\NetCore\NetCoreWebAPI\bin\Debug\net7.0\appsettings.Production.json
