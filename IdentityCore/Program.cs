@@ -1,5 +1,7 @@
 using IdentityCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -9,7 +11,12 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("IdentityCoreContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityCoreContextConnection' not found.");
 // Add services to the container.
-
+var policy = new CorsPolicyBuilder()
+            .AllowAnyHeader()
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .Build();
+builder.Services.AddCors(c => c.AddPolicy("Cor", policy));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -59,6 +66,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("Cor");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

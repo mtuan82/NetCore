@@ -34,7 +34,7 @@ namespace IdentityCore.Controllers
         {
             var user = await userManager.FindByEmailAsync(model.Email);
             if (user is not null)
-                return BadRequest("Email registered already");
+                return BadRequest(new ResultModel() { Error = "Email registered already" });
 
             var newUser = new IdentityCoreUser()
             {
@@ -46,7 +46,7 @@ namespace IdentityCore.Controllers
             var result = await userManager.CreateAsync(newUser, newUser.PasswordHash!);
             if(!result.Succeeded)
             {
-                return BadRequest("Internal Error. Please try again");
+                return BadRequest(new ResultModel() { Error = "Internal Error. Please try again" });
             }
             //Assign Role
             var role = await roleManager.FindByNameAsync(model.Role);
@@ -60,31 +60,31 @@ namespace IdentityCore.Controllers
             }
             else
             {
-                return BadRequest("Role not exist");
+                return BadRequest(new ResultModel() { Error = "Role not exist" });
             }
             var resultRole = await userManager.AddToRoleAsync(newUser, model.Role);
             if(resultRole.Succeeded)
             {
                 return Ok(resultRole);
             }
-            return BadRequest("Bad Request");
+            return BadRequest(new ResultModel() { Error = "Bad Request" });
         }
 
         [HttpPost("Login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (model is null)
             {
-                return BadRequest("Bad Request");
+                return BadRequest(new ResultModel() { Error = "Bad Request" });
             }
 
             var user = await userManager.FindByEmailAsync(model.Email!);
-            if (user is null) { return BadRequest("User not Found"); }
+            if (user is null) { return BadRequest(new ResultModel() { Error = "User not Found" }); }
 
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password!))
             {
                 var userRoles = await userManager.GetRolesAsync(user);
-
                 var authClaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.UserName !),
@@ -97,9 +97,9 @@ namespace IdentityCore.Controllers
                 }
                 var token = GetToken(authClaims);
 
-                return Ok(token);
+                return Ok(new ResultModel() { Token = token });
             }
-            return BadRequest("Password incorrect");
+            return BadRequest(new ResultModel() { Error = "Password incorrect" });
         }
 
         [HttpGet("Logout")]
