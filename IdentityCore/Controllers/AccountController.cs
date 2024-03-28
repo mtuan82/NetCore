@@ -32,46 +32,52 @@ namespace IdentityCore.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(RegisterModel model)
         {
-            var user = await userManager.FindByEmailAsync(model.Email);
-            if (user is not null)
-                return BadRequest(new ResultModel() { Error = "Email registered already" });
+            try
+            {
+                var user = await userManager.FindByEmailAsync(model.Email);
+                if (user is not null)
+                    return BadRequest(new ResultModel() { Error = "Email registered already" });
 
-            var newUser = new IdentityCoreUser()
-            {
-                UserName = model.UserName,
-                PasswordHash = model.Password,
-                Email = model.Email,
-                PhoneNumber = model.PhoneNumber
-            };
-            var result = await userManager.CreateAsync(newUser, newUser.PasswordHash!);
-            if(!result.Succeeded)
-            {
-                return BadRequest(new ResultModel() { Error = "Internal Error. Please try again" });
+                var newUser = new IdentityCoreUser()
+                {
+                    UserName = model.UserName,
+                    PasswordHash = model.Password,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber
+                };
+                var result = await userManager.CreateAsync(newUser, newUser.PasswordHash!);
+                if (!result.Succeeded)
+                {
+                    return BadRequest(new ResultModel() { Error = "Internal Error. Please try again" });
+                }
+                //Assign Role
+                var role = await roleManager.FindByNameAsync(model.Role);
+                if (role is null && model.Role == Enum.GetName(typeof(Roles), Roles.Admin)!)
+                {
+                    await roleManager.CreateAsync(new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.Admin) });
+                }
+                else if (role is null && model.Role == Enum.GetName(typeof(Roles), Roles.User)!)
+                {
+                    await roleManager.CreateAsync(new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.User) });
+                }
+                else
+                {
+                    return BadRequest(new ResultModel() { Error = "Role not exist" });
+                }
+                var resultRole = await userManager.AddToRoleAsync(newUser, model.Role);
+                if (resultRole.Succeeded)
+                {
+                    return Ok(new ResultModel() { IsSuccessful = true });
+                }
+                return BadRequest(new ResultModel() { Error = "Bad Request" });
             }
-            //Assign Role
-            var role = await roleManager.FindByNameAsync(model.Role);
-            if(role is null && model.Role == Enum.GetName(typeof(Roles), Roles.Admin)!)
+            catch (Exception ex)
             {
-                await roleManager.CreateAsync(new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.Admin) });
+                return BadRequest(new ResultModel() { Error = ex.Message });
             }
-            else if(role is null && model.Role == Enum.GetName(typeof(Roles), Roles.User)!)
-            {
-                await roleManager.CreateAsync(new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.User) });
-            }
-            else
-            {
-                return BadRequest(new ResultModel() { Error = "Role not exist" });
-            }
-            var resultRole = await userManager.AddToRoleAsync(newUser, model.Role);
-            if(resultRole.Succeeded)
-            {
-                return Ok(resultRole);
-            }
-            return BadRequest(new ResultModel() { Error = "Bad Request" });
         }
 
         [HttpPost("Login")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (model is null)
@@ -97,15 +103,16 @@ namespace IdentityCore.Controllers
                 }
                 var token = GetToken(authClaims);
 
-                return Ok(new ResultModel() { Token = token });
+                return Ok(new ResultModel() { Token = token, IsSuccessful = true });
             }
             return BadRequest(new ResultModel() { Error = "Password incorrect" });
         }
 
         [HttpGet("Logout")]
-        public void Logout()
+        public async Task<IActionResult> Logout()
         {
-            signInManager.SignOutAsync();
+            await signInManager.SignOutAsync();
+            return Ok(new ResultModel() { IsSuccessful = true });
         }
 
         private string GetToken(List<Claim> authClaims)
