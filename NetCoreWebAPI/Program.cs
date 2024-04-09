@@ -9,12 +9,10 @@ using NetCoreWebAPI.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
-
 var env = new AppSettings(builder.Configuration);
 env.SetupEnv();
+
+ConfigureAuthentication.AddAuthentication(builder.Services, env.Identity);
 
 //MongoDB Provider
 ConfigureMongoDB.SetupDatabase(builder.Services, env.MongoDB);

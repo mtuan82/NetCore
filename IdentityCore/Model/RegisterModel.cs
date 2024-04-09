@@ -14,6 +14,10 @@ namespace IdentityCore.Model
 
         public required string Password { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         public required string Role { get; set; }
     }
 }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj": {}
+    "D:\\Frontend\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\NetCore\\Core\\Core.csproj": {
+    "D:\\Frontend\\NetCore\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\NetCore\\Core\\Core.csproj",
+        "projectUniqueName": "D:\\Frontend\\NetCore\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\NetCore\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\18507\\.nuget\\packages\\",
-        "outputPath": "C:\\NetCore\\Core\\obj\\",
+        "projectPath": "D:\\Frontend\\NetCore\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "D:\\Frontend\\NetCore\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\18507\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -114,21 +119,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj": {
+    "D:\\Frontend\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj",
+        "projectUniqueName": "D:\\Frontend\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj",
         "projectName": "NetCoreWebAPI",
-        "projectPath": "C:\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj",
-        "packagesPath": "C:\\Users\\18507\\.nuget\\packages\\",
-        "outputPath": "C:\\NetCore\\NetCoreWebAPI\\obj\\",
+        "projectPath": "D:\\Frontend\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "D:\\Frontend\\NetCore\\NetCoreWebAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\18507\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -136,14 +145,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\NetCore\\Core\\Core.csproj": {
-                "projectPath": "C:\\NetCore\\Core\\Core.csproj"
+              "D:\\Frontend\\NetCore\\Core\\Core.csproj": {
+                "projectPath": "D:\\Frontend\\NetCore\\Core\\Core.csproj"
               }
             }
           }
@@ -221,7 +231,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

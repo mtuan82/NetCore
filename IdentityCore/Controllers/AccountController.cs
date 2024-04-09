@@ -43,7 +43,10 @@ namespace IdentityCore.Controllers
                     UserName = model.UserName,
                     PasswordHash = model.Password,
                     Email = model.Email,
-                    PhoneNumber = model.PhoneNumber
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber, 
+                    TwoFactorEnabled = model.TwoFactorEnabled
                 };
                 var result = await userManager.CreateAsync(newUser, newUser.PasswordHash!);
                 if (!result.Succeeded)
@@ -60,7 +63,7 @@ namespace IdentityCore.Controllers
                 {
                     await roleManager.CreateAsync(new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.User) });
                 }
-                else
+                else if (role is null)
                 {
                     return BadRequest(new ResultModel() { Error = "Role not exist" });
                 }

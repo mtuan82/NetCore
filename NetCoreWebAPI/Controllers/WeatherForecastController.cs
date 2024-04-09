@@ -22,6 +22,7 @@ namespace NetCoreWebAPI.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = "Admin,User")]
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {

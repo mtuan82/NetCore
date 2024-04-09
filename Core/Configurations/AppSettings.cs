@@ -10,6 +10,7 @@ namespace Core.Configurations
         {
             Configuration = configuration;
         }
+        public IdentitySettings Identity { get; set; }
         public MSSQLSettings MssqlDB { get; set; }
         public MySQLSettings MysqlDB { get; set; }
         public PostgreSQLSettings PostgresqlDB { get; set; }
@@ -18,6 +19,14 @@ namespace Core.Configurations
 
         public void SetupEnv()
         {
+            Identity = new IdentitySettings()
+            {
+                IsLocal = bool.Parse(Configuration["Identity:IsLocal"] ?? "true") ,
+                SigningKey = Configuration["Identity:SigningKey"] ?? "",
+                Issuers = Configuration["Identity:Issuers"] ?? "",
+                ValidateHttps = bool.Parse(Configuration["Identity:ValidateHttps"] ?? "false")
+            };
+
             MssqlDB = new MSSQLSettings()
             {
                 Port = Configuration["MssqlDB:Port"] ?? "",
