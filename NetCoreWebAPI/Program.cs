@@ -1,10 +1,7 @@
 using Core.Configurations;
 using Core.Providers.MSSQL;
 using Core.Providers.PostgreSQL;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Web;
 using NetCoreWebAPI.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 var env = new AppSettings(builder.Configuration);
 env.SetupEnv();
 
-ConfigureAuthentication.AddAuthentication(builder.Services, env.Identity);
+//ConfigureAuthentication.AddAuthentication(builder.Services, env.Identity);
 
 //MongoDB Provider
-ConfigureMongoDB.SetupDatabase(builder.Services, env.MongoDB);
+ConfigureMongoDB.SetupDatabase(builder.Services, builder.Configuration);
 
 //MYSQL Provider
 ConfigureMySQL.SetupDatabase(builder.Services, env.MysqlDB);

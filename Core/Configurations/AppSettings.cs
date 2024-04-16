@@ -1,5 +1,4 @@
-﻿using Core.Configurations;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace Core.Configurations
 {
@@ -14,7 +13,6 @@ namespace Core.Configurations
         public MSSQLSettings MssqlDB { get; set; }
         public MySQLSettings MysqlDB { get; set; }
         public PostgreSQLSettings PostgresqlDB { get; set; }
-        public MongoDBSettings MongoDB { get; set; }
         public RedisSettings Redis { get; set; }
 
         public void SetupEnv()
@@ -52,15 +50,6 @@ namespace Core.Configurations
                 Database = Configuration["Postgresqldb:Database"] ?? "",
                 UserName = Configuration["Postgresqldb:UserName"] ?? "",
                 Password = Configuration["Postgresqldb:Password"] ?? "",
-            };
-
-            MongoDB = new MongoDBSettings()
-            {
-                Port = Configuration["Mongodb:Port"] ?? "",
-                Host = Configuration["Mongodb:Host"] ?? "",
-                Database = Configuration["Mongodb:Database"] ?? "",
-                UserName = Configuration["Mongodb:UserName"] ?? "",
-                Password = Configuration["Mongodb:Password"] ?? "",
             };
 
             Redis = new RedisSettings()

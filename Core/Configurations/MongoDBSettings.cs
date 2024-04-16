@@ -1,26 +1,19 @@
-﻿using NetEscapades.Configuration.Validation;
-using System.ComponentModel.DataAnnotations;
-
-namespace Core.Configurations
+﻿namespace Core.Configurations
 {
-    public class MongoDBSettings : IValidatable
+    public class MongoDBSettings : IMongoDBSettings
     {
         public required string Host { get; set; }
 
-        public required string Port { get; set; }
-
         public required string Database { get; set; }
 
-        public required string UserName { get; set; }
+        public string ConnectionString => $"{Host}";
 
-        public required string Password { get; set; }
+    }
 
-        public string ConnectionString =>
-            $"Host={Host};Port={Port};Database={Database};Username={UserName};Password='{Password}';";
-
-        public void Validate()
-        {
-            Validator.ValidateObject(this, new ValidationContext(this), true);
-        }
+    public interface IMongoDBSettings
+    {
+        string Host { get; set; }
+        string Database { get; set; }
+        string ConnectionString => $"{Host}";
     }
 }
