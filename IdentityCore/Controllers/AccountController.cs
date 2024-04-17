@@ -1,5 +1,6 @@
 ﻿using IdentityCore.Identity;
 using IdentityCore.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -126,9 +127,16 @@ namespace IdentityCore.Controllers
                 issuer: config["JWT:ValidIssuer"]!,
                 audience: config["JWT:ValidAudience"]!,
                 claims: authClaims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddMinutes(1),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("testexpiration")]
+        public async Task<IActionResult> testexpiration()
+        {
+            return Ok(new ResultModel() { IsSuccessful = true });        
         }
     }
 }

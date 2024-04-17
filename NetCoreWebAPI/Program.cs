@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 var env = new AppSettings(builder.Configuration);
 env.SetupEnv();
 
-//ConfigureAuthentication.AddAuthentication(builder.Services, env.Identity);
+ConfigureAuthentication.AddAuthentication(builder.Services, env.Identity);
 
 //MongoDB Provider
 ConfigureMongoDB.SetupDatabase(builder.Services, builder.Configuration);

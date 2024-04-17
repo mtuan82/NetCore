@@ -12,7 +12,7 @@ namespace NetCoreWebAPI.Configurations
     {
         public static void AddAuthentication(this IServiceCollection services, IdentitySettings appSettings)
         {
-            var issuers = Newtonsoft.Json.JsonConvert.DeserializeObject<List<string>>(appSettings.Issuers);
+            var issuers = GetList(appSettings.Issuers);
 
             var authenticationBuilder = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
 
@@ -28,7 +28,8 @@ namespace NetCoreWebAPI.Configurations
                         RequireSignedTokens = true,
                         ValidateLifetime = true,
                         ValidateAudience = false,
-                        ValidateIssuer = false
+                        ValidateIssuer = false,
+                        LifetimeValidator = LifetimeValidator,
                     };
                 });
             }
@@ -52,6 +53,7 @@ namespace NetCoreWebAPI.Configurations
                             ValidateIssuerSigningKey = true,
                             ValidateIssuer = true,
                             ValidateLifetime = true,
+                            LifetimeValidator = LifetimeValidator,
                             ValidateAudience = false //aws cognito is not passing audience,
                         };
 
@@ -118,6 +120,20 @@ namespace NetCoreWebAPI.Configurations
                 //            )
                 //        );
             });
+        }
+
+        private static List<string> GetList(string settings)
+        {        
+            return new List<string>(settings.Split(","));
+        }
+
+        private static bool LifetimeValidator(DateTime? notBefore, DateTime? expires, SecurityToken token, TokenValidationParameters @params)
+        {
+            if (expires != null)
+            {
+                return expires > DateTime.UtcNow;
+            }
+            return false;
         }
     }
 }

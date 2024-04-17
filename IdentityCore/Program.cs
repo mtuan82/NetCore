@@ -1,6 +1,6 @@
+using IdentityCore.Configuration;
 using IdentityCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,11 +22,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<CoreContext>(options => options.UseMySQL(connectionString));
+
 //Identity
 builder.Services.AddIdentity<IdentityCoreUser, IdentityRole>()
                 .AddEntityFrameworkStores<CoreContext>()
                 .AddSignInManager()
                 .AddRoles<IdentityRole>();
+
 //Authentication JWT
 builder.Services.AddAuthentication(options =>
 {
@@ -36,9 +38,11 @@ builder.Services.AddAuthentication(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
+        ClockSkew = TimeSpan.Zero,
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
+        LifetimeValidator = TokenValidators.LifetimeValidator,
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
         ValidAudience = builder.Configuration["JWT:ValidAudience"],
