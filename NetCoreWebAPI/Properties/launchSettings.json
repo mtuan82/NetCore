@@ -21,9 +21,11 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:7070",
+      "applicationUrl": "http://localhost:7000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_HTTPS_PORTS": "7000",
+        "ASPNETCORE_URLS=http": "http://+:7000"
       },
       "publishAllPorts": true,
       "useSSL": false

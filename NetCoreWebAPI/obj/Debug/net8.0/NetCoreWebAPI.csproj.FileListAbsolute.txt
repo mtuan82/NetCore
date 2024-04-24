@@ -394,3 +394,11 @@ D:\Frontend\NetCore\NetCoreWebAPI\obj\Debug\net8.0\refint\NetCoreWebAPI.dll
 D:\Frontend\NetCore\NetCoreWebAPI\obj\Debug\net8.0\NetCoreWebAPI.pdb
 D:\Frontend\NetCore\NetCoreWebAPI\obj\Debug\net8.0\NetCoreWebAPI.genruntimeconfig.cache
 D:\Frontend\NetCore\NetCoreWebAPI\obj\Debug\net8.0\ref\NetCoreWebAPI.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Scrutor.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

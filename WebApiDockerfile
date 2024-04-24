@@ -19,5 +19,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-EXPOSE 7070
+EXPOSE 7000
 ENTRYPOINT ["dotnet", "NetCoreWebAPI/NetCoreWebAPI.dll"]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using NetCoreWebAPI.Services.MongoDB;
 using NetCoreWebAPI.Services.MongoDB.Model;
@@ -16,7 +17,7 @@ namespace NetCoreWebAPI.Controllers
             _mongoDBService = mongoDBService;
         }
 
-        // GET: api/<MongoDBController>
+        [Authorize(Policy = "api.read", Roles = "Admin")]
         [HttpGet]
         public IActionResult FindContainsName(string name)
         {
@@ -26,6 +27,7 @@ namespace NetCoreWebAPI.Controllers
 
         // GET api/<MongoDBController>/5
         [HttpGet("{id}")]
+        [Authorize(Policy = "api.read", Roles = "User")]
         public async Task<IActionResult> FindById(string id)
         {
             var data = await _mongoDBService.FindById(id);
@@ -34,6 +36,7 @@ namespace NetCoreWebAPI.Controllers
 
         // POST api/<MongoDBController>
         [HttpPost]
+        [Authorize(Policy = "api.create", Roles = "Admin")]
         public async Task<IActionResult> Post(string name, double price)
         {
             await _mongoDBService.InsertOne(new Product()
@@ -47,6 +50,7 @@ namespace NetCoreWebAPI.Controllers
 
         // PUT api/<MongoDBController>/5
         [HttpPut("{id}")]
+        [Authorize(Policy = "api.update", Roles = "Admin")]
         public async Task<IActionResult> Put(string id, string name, double price,DateTime ExpirationDate)
         {
             await _mongoDBService.UpdateOne(new Product()
@@ -60,6 +64,7 @@ namespace NetCoreWebAPI.Controllers
         }
 
         // DELETE api/<MongoDBController>/5
+        [Authorize(Policy = "api.delete", Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

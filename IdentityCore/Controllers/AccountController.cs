@@ -1,4 +1,6 @@
-﻿using IdentityCore.Identity;
+﻿using Core.Enum;
+using Core.Providers.PostgreSQL.Entity;
+using IdentityCore.Identity;
 using IdentityCore.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -19,7 +21,7 @@ namespace IdentityCore.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration config;
 
-        public AccountController(UserManager<IdentityCoreUser> userManager, 
+        public AccountController(UserManager<IdentityCoreUser> userManager,
             SignInManager<IdentityCoreUser> signInManager,
             RoleManager<IdentityRole> roleManager,
             IConfiguration config)
@@ -46,7 +48,7 @@ namespace IdentityCore.Controllers
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    PhoneNumber = model.PhoneNumber, 
+                    PhoneNumber = model.PhoneNumber,
                     TwoFactorEnabled = model.TwoFactorEnabled
                 };
                 var result = await userManager.CreateAsync(newUser, newUser.PasswordHash!);
@@ -58,11 +60,18 @@ namespace IdentityCore.Controllers
                 var role = await roleManager.FindByNameAsync(model.Role);
                 if (role is null && model.Role == Enum.GetName(typeof(Roles), Roles.Admin)!)
                 {
-                    await roleManager.CreateAsync(new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.Admin) });
+                    var idRole = new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.Admin) };
+                    await roleManager.CreateAsync(idRole);
+                    await roleManager.AddClaimAsync(idRole, new Claim("scope", config["JWT:IdentityDomain"] + "api.create"));
+                    await roleManager.AddClaimAsync(idRole, new Claim("scope", config["JWT:IdentityDomain"] + "api.update"));
+                    await roleManager.AddClaimAsync(idRole, new Claim("scope", config["JWT:IdentityDomain"] + "api.read"));
+                    await roleManager.AddClaimAsync(idRole, new Claim("scope", config["JWT:IdentityDomain"] + "api.delete"));
                 }
                 else if (role is null && model.Role == Enum.GetName(typeof(Roles), Roles.User)!)
                 {
-                    await roleManager.CreateAsync(new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.User) });
+                    var idRole = new IdentityRole() { Name = Enum.GetName(typeof(Roles), Roles.User) };
+                    await roleManager.CreateAsync(idRole);
+                    await roleManager.AddClaimAsync(idRole, new Claim("scope", config["JWT:IdentityDomain"] + "/api.read"));
                 }
                 else if (role is null)
                 {
@@ -104,6 +113,15 @@ namespace IdentityCore.Controllers
                 foreach (var userRole in userRoles)
                 {
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                    var role = await roleManager.FindByNameAsync(userRole);
+                    if (role != null)
+                    {
+                        var claims = await roleManager.GetClaimsAsync(role);
+                        foreach (var claim in claims)
+                        {
+                            authClaims.Add(new Claim("scope", claim.Value));
+                        }
+                    }
                 }
                 var token = GetToken(authClaims);
 
@@ -127,7 +145,7 @@ namespace IdentityCore.Controllers
                 issuer: config["JWT:ValidIssuer"]!,
                 audience: config["JWT:ValidAudience"]!,
                 claims: authClaims,
-                expires: DateTime.Now.AddMinutes(1),
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
@@ -136,7 +154,7 @@ namespace IdentityCore.Controllers
         [HttpGet("testexpiration")]
         public async Task<IActionResult> testexpiration()
         {
-            return Ok(new ResultModel() { IsSuccessful = true });        
+            return Ok(new ResultModel() { IsSuccessful = true });
         }
     }
 }

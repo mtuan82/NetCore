@@ -11,6 +11,8 @@ namespace Core.Configurations
 
         public required string Issuers { get; set; }
 
+        public required string IdentityDomain { get; set; }
+
         public required bool ValidateHttps { get; set; }
 
 

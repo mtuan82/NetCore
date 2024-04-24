@@ -22,6 +22,7 @@ namespace Core.Configurations
                 IsLocal = bool.Parse(Configuration["Identity:IsLocal"] ?? "true") ,
                 SigningKey = Configuration["Identity:SigningKey"] ?? "",
                 Issuers = Configuration["Identity:Issuers"] ?? "",
+                IdentityDomain = Configuration["Identity:IdentityDomain"] ?? "",
                 ValidateHttps = bool.Parse(Configuration["Identity:ValidateHttps"] ?? "false")
             };
 

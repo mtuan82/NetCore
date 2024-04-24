@@ -6,6 +6,7 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
+COPY ./Core ./Core
 COPY ./IdentityCore ./IdentityCore
 
 RUN dotnet restore ./IdentityCore/IdentityCore.csproj
@@ -18,5 +19,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-EXPOSE 6060
+EXPOSE 7070
 ENTRYPOINT ["dotnet", "IdentityCore/IdentityCore.dll"]

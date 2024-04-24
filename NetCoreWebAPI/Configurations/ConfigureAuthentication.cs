@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Core.Authorization;
 
 namespace NetCoreWebAPI.Configurations
 {
@@ -12,9 +13,15 @@ namespace NetCoreWebAPI.Configurations
     {
         public static void AddAuthentication(this IServiceCollection services, IdentitySettings appSettings)
         {
+            services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
+
             var issuers = GetList(appSettings.Issuers);
 
-            var authenticationBuilder = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+            var authenticationBuilder = services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            });
 
             if (appSettings.IsLocal)
             {
@@ -66,64 +73,73 @@ namespace NetCoreWebAPI.Configurations
 
             services.AddAuthorization(options =>
             {
-
-                var authSchemes = issuers.Select(i => $"{JwtBearerDefaults.AuthenticationScheme}_{i}").ToArray();
-
-                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                if (!appSettings.IsLocal)
+                {
+                    var authSchemes = issuers.Select(i => $"{JwtBearerDefaults.AuthenticationScheme}_{i}").ToArray();
+                    options.DefaultPolicy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .AddAuthenticationSchemes(authSchemes)
                     .Build();
-
-                //HasScopeAllHandler for 'all' will grant full access
-
-                //options.AddPolicy("assignment.create",
-                //     policy =>
-                //         policy.Requirements.Add(
-                //             new HasScopeRequirement(
-                //                 appSettings.Identity.ScopeBaseDomain,
-                //                 appSettings.Identity.ScopeBaseDomain + "/assignment.create",
-                //                 issuers
-                //                 )
-                //             )
-                //         );
-
-                //options.AddPolicy("assignment.read",
-                //    policy =>
-                //        policy.Requirements.Add(
-                //            new HasScopeRequirement(
-                //                appSettings.Identity.ScopeBaseDomain,
-                //                appSettings.Identity.ScopeBaseDomain + "/assignment.read",
-                //                issuers
-                //                )
-                //            )
-                //        );
-
-                //options.AddPolicy("configuration.read",
-                //    policy =>
-                //        policy.Requirements.Add(
-                //            new HasScopeRequirement(
-                //                appSettings.Identity.ScopeBaseDomain,
-                //                appSettings.Identity.ScopeBaseDomain + "/configuration.read",
-                //                issuers
-                //                )
-                //            )
-                //        );
-
-                //options.AddPolicy("configuration.write",
-                //    policy =>
-                //        policy.Requirements.Add(
-                //            new HasScopeRequirement(
-                //                appSettings.Identity.ScopeBaseDomain,
-                //                appSettings.Identity.ScopeBaseDomain + "/configuration.write",
-                //                issuers
-                //                )
-                //            )
-                //        );
+                }
+                else
+                {
+                    options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                }
+                options.AddPolicy("api.create",
+                     policy =>
+                     {
+                         policy.RequireRole("Admin");
+                         policy.Requirements.Add(
+                                 new HasScopeRequirement(
+                                     appSettings.IdentityDomain,
+                                     appSettings.IdentityDomain + "api.create",
+                                     issuers
+                                     )
+                                 );
+                     });
+                options.AddPolicy("api.update",
+                     policy =>
+                     {
+                         policy.RequireRole("Admin");
+                         policy.Requirements.Add(
+                                 new HasScopeRequirement(
+                                     appSettings.IdentityDomain,
+                                     appSettings.IdentityDomain + "api.update",
+                                     issuers
+                                     )
+                                 );
+                     });
+                options.AddPolicy("api.read",
+                     policy =>
+                     {
+                         policy.RequireRole("Admin","User");
+                         policy.Requirements.Add(
+                           new HasScopeRequirement(
+                               appSettings.IdentityDomain,
+                               appSettings.IdentityDomain + "api.read",
+                               issuers
+                               )
+                           );
+                     });
+                options.AddPolicy("api.delete",
+                     policy =>
+                     {
+                         policy.RequireRole("Admin");
+                         policy.Requirements.Add(
+                            new HasScopeRequirement(
+                                appSettings.IdentityDomain,
+                                appSettings.IdentityDomain + "api.delete",
+                                issuers
+                                )
+                            );
+                     });
             });
         }
 
         private static List<string> GetList(string settings)
-        {        
+        {
             return new List<string>(settings.Split(","));
         }
 
