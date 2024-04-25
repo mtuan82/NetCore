@@ -1,83 +1,55 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreWebAPI.Services.Redis;
+using NetCoreWebAPI.Services.Redis.Model;
+using NetCoreWebAPI.Utils;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace NetCoreWebAPI.Controllers
 {
-    public class RedisController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RedisController : ControllerBase
     {
-        // GET: RedisController
-        public ActionResult Index()
-        {
-            return View();
+        private IRedisService redisService;
+        private const string key = "Transit";
+        public RedisController(IRedisService _redisService) {
+            redisService = _redisService;
         }
 
-        // GET: RedisController/Details/5
-        public ActionResult Details(int id)
+        // GET api/<RedisController>/5
+        [HttpGet]
+        [Authorize(Policy = "api.read", Roles = "Admin")]
+        public async Task<IActionResult> GetPrices()
         {
-            return View();
+            var userid = UserUtil.GetUserId(User);
+            return Ok(await redisService.Get(userid));
         }
 
-        // GET: RedisController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: RedisController/Create
+        // POST api/<RedisController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [Authorize(Policy = "api.create", Roles = "Admin")]
+        public async Task<IActionResult> CreateOrUpdate(List<Price> prices)
         {
-            try
+            var userid = UserUtil.GetUserId(User);
+            foreach (var pr in prices)
             {
-                return RedirectToAction(nameof(Index));
+                pr.ProviderId = userid;
+                pr.LastUpdateBy = userid;
             }
-            catch
-            {
-                return View();
-            }
+            await redisService.CreateOrUpdate(prices, userid);
+            return Ok("Successful");
         }
 
-        // GET: RedisController/Edit/5
-        public ActionResult Edit(int id)
+        // DELETE api/<RedisController>/5
+        [HttpDelete]
+        [Authorize(Policy = "api.delete", Roles = "Admin")]
+        public async Task<IActionResult> DeletePrice()
         {
-            return View();
-        }
-
-        // POST: RedisController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RedisController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: RedisController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var userid = UserUtil.GetUserId(User);
+            await redisService.Delete(userid);
+            return Ok("delete successful provider " + userid);
         }
     }
 }

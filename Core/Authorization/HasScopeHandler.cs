@@ -16,7 +16,7 @@ namespace Core.Authorization
             if (!context.User.HasClaim(c => c.Type == "scope" && requirement.Issuers.Contains(c.Issuer)))
                 return Task.CompletedTask;
 
-            // Split the scopes string into an array
+            // query the scopes string into an array
             var scopes = context.User.FindAll(c => c.Type == "scope" && requirement.Issuers.Contains(c.Issuer));
 
             // Succeed if the scope array contains the required scope

@@ -1,4 +1,8 @@
 ﻿using Core.Configurations;
+using Core.Providers.Redis;
+using NetCoreWebAPI.Services.MongoDB;
+using NetCoreWebAPI.Services.Redis;
+using StackExchange.Redis.Extensions.Core.Abstractions;
 using StackExchange.Redis.Extensions.Core.Configuration;
 using StackExchange.Redis.Extensions.Newtonsoft;
 
@@ -22,6 +26,9 @@ namespace NetCoreWebAPI.Configurations
                 }
             };
             services.AddStackExchangeRedisExtensions<NewtonsoftSerializer>(config);
+
+            services.AddScoped<IRedisProvider, RedisProvider>();
+            services.AddScoped<IRedisService, RedisService>();
         }
     }
 }

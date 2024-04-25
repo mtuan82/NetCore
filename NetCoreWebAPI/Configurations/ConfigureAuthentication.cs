@@ -55,7 +55,8 @@ namespace NetCoreWebAPI.Configurations
                             {
                                 return openIDConfig.SigningKeys;
                             },
-
+                            RequireExpirationTime = true,
+                            RequireSignedTokens = true,
                             ValidIssuer = issuer,
                             ValidateIssuerSigningKey = true,
                             ValidateIssuer = true,

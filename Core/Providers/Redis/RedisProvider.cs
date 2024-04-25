@@ -23,7 +23,7 @@ namespace Core.Providers.Redis
             await Redis().KeyDeleteAsync($"{rootKey ?? DefaultCacheKey}-{key.ToLowerInvariant()}");
         }
 
-        public async Task<IEnumerable<T>> GetValue<T>(string rootKey, string itemKey) where T : class, new()
+        public async Task<IEnumerable<T>?> GetValue<T>(string rootKey, string itemKey) where T : class, new()
         {
             if (itemKey != null)
             {
