@@ -1,19 +1,19 @@
 version: '3.9'
 
 services:
-  # webapi:
-  #   container_name: "webapi"
-  #   image: webapi
-  #   build:
-  #     context: .
-  #     dockerfile: ./WebApiDockerfile
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     - ASPNETCORE_URLS=http://+:7000
-  #     - ASPNETCORE_HTTPS_PORTS=7000
-  #   ports:
-  #     - 7000:7000
-  #   entrypoint: dotnet NetCoreWebAPI.dll
+  webapi:
+    container_name: "webapi"
+    image: webapi
+    build:
+      context: .
+      dockerfile: ./WebApiDockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:7000
+      - ASPNETCORE_HTTPS_PORTS=7000
+    ports:
+      - 7000:7000
+    entrypoint: dotnet NetCoreWebAPI.dll
 
   identity:
     container_name: "identity"
@@ -31,25 +31,25 @@ services:
       - mysql
     entrypoint: dotnet IdentityCore.dll  
 
-  # rabbitmq:
-  #   container_name: "rabbitmq"
-  #   image: rabbitmq:management
-  #   environment:
-  #       - RABBITMQ_DEFAULT_USER=rabbitmq
-  #       - RABBITMQ_DEFAULT_PASS=rabbit265
-  #   ports:
-  #       #Rabbitmq
-  #       - '5672:5672'
-  #       #Web management
-  #       - '15672:15672'
+  rabbitmq:
+    container_name: "rabbitmq"
+    image: rabbitmq:management
+    environment:
+        - RABBITMQ_DEFAULT_USER=rabbitmq
+        - RABBITMQ_DEFAULT_PASS=rabbit265
+    ports:
+        #Rabbitmq
+        - '5672:5672'
+        #Web management
+        - '15672:15672'
 
-  # redis:
-  #   container_name: "redis-stack-server"
-  #   image: redis/redis-stack:latest
-  #   restart: always
-  #   ports:
-  #       - 6379:6379
-  #       - 8001:8001
+  redis:
+    container_name: "redis-stack-server"
+    image: redis/redis-stack:latest
+    restart: always
+    ports:
+        - 6379:6379
+        - 8001:8001
   
   mysql:
     container_name: "mysql"
@@ -63,9 +63,9 @@ services:
       MYSQL_USER: dev_user
       MYSQL_PASSWORD: navarre2245
       MYSQL_DATABASE: identitycore
-  # adminer:
-  #   container_name: "mysql_adminer"
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
+  adminer:
+    container_name: "mysql_adminer"
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

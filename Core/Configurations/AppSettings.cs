@@ -14,6 +14,7 @@ namespace Core.Configurations
         public MySQLSettings MysqlDB { get; set; }
         public PostgreSQLSettings PostgresqlDB { get; set; }
         public RedisSettings Redis { get; set; }
+        public RabbitMQSettings RabbitMQ { get; set; }
 
         public void SetupEnv()
         {
@@ -58,6 +59,14 @@ namespace Core.Configurations
                 Host = Configuration["Redis:Host"] ?? "",
                 Port = Configuration["Redis:Port"] == null ? 6379 : int.Parse(Configuration["Redis:Port"]),
                 PoolSize = Configuration["Redis:PoolSize"] == null ? 1 : int.Parse(Configuration["Redis:PoolSize"])
+            };
+
+            RabbitMQ = new RabbitMQSettings()
+            {
+                Host = Configuration["RabbitMQ:Host"] ?? "",
+                Port = Configuration["RabbitMQ:Port"] == null ? 6379 : int.Parse(Configuration["RabbitMQ:Port"]),
+                UserName = Configuration["RabbitMQ:UserName"] == null ? "" : Configuration["RabbitMQ:UserName"],
+                Password = Configuration["RabbitMQ:Password"] == null ? "" : Configuration["RabbitMQ:Password"]
             };
         }
 

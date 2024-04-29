@@ -1,6 +1,7 @@
 ﻿using Core.Configurations;
 using Core.Providers.MySQL;
 using Microsoft.EntityFrameworkCore;
+using NetCoreWebAPI.Services.MySQL;
 
 namespace NetCoreWebAPI.Configurations
 {
@@ -11,6 +12,8 @@ namespace NetCoreWebAPI.Configurations
             services.AddDbContext<MySQLProvider>(options =>
                 options.UseLazyLoadingProxies().UseMySQL(databaseSettings.ConnectionString)
              , ServiceLifetime.Singleton);
+
+            services.AddScoped<IMySQLService, MySQLService>();
         }
     }
 }

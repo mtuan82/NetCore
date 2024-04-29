@@ -35,6 +35,9 @@ builder.Services.AddDbContext<PostgreSQLProvider>(option =>
 //Redis 
 ConfigureRedis.RegisterRedis(builder.Services,env.Redis);
 
+//RabbitMQ 
+ConfigureRabbitMQ.SetupRabbitMQ(builder.Services, env.RabbitMQ);
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

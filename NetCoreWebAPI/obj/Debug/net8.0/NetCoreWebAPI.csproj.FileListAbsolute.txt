@@ -402,3 +402,4 @@ D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata
 D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\RabbitMQ.Client.dll
