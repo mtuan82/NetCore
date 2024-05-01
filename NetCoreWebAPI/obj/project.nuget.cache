@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zokGY4bhEXWJDZitKnyzL/ZgwH9+kwbDPJ/9x+Z09zcPS23ILmpHgPikTMWgM1oyeLEdLx/VNr5NWOC5Eq+j0A==",
+  "dgSpecHash": "HPKpsRdEqO+PWGqJZfCkvp+G1w66xoEhurJIqRRe/9POoCB9swbke+AAo4MCrNsAAb5oZzIk7AqoZXIJY7U1zw==",
   "success": true,
   "projectFilePath": "D:\\Frontend\\NetCore\\NetCoreWebAPI\\NetCoreWebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tuan\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Tuan\\.nuget\\packages\\azure.core\\1.36.0\\azure.core.1.36.0.nupkg.sha512",

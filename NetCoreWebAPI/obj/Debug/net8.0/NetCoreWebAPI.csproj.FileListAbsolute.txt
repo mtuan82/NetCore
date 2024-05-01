@@ -403,3 +403,4 @@ D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Dependen
 D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\RabbitMQ.Client.dll
+D:\Frontend\NetCore\NetCoreWebAPI\bin\Debug\net8.0\AutoMapper.dll
