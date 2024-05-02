@@ -30,7 +30,7 @@ namespace NetCoreWebAPI.Controllers
 
         // POST api/<MySQLController>
         [HttpPost]
-        public async Task<IActionResult> UpdateCustomer([FromBody] Customer value)
+        public async Task<IActionResult> CreateCustomer([FromBody] Customer value)
         {
             if (value == null)
             {

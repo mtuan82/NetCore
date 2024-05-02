@@ -26,11 +26,7 @@ builder.Services.AddDbContext<MSSQLProvider>(option =>
 },ServiceLifetime.Scoped);
 
 //PostgreSQL Provider
-builder.Services.AddDbContext<PostgreSQLProvider>(option =>
-{
-    option.UseLazyLoadingProxies()
-            .UseNpgsql(env.PostgresqlDB.ConnectionString);
-}, ServiceLifetime.Singleton);
+ConfigurePostgreSQL.SetupDatabase(builder.Services, env.PostgresqlDB);
 
 //Redis 
 ConfigureRedis.RegisterRedis(builder.Services,env.Redis);

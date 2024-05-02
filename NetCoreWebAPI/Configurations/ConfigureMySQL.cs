@@ -1,9 +1,7 @@
-﻿using AutoMapper;
-using Core.Configurations;
+﻿using Core.Configurations;
 using Core.Providers.MySQL;
 using Core.Providers.MySQL.Entity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using NetCoreWebAPI.Services.MySQL;
 
 namespace NetCoreWebAPI.Configurations

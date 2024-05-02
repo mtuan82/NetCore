@@ -63,8 +63,19 @@ services:
       MYSQL_USER: dev_user
       MYSQL_PASSWORD: navarre2245
       MYSQL_DATABASE: identitycore
+
+  postgresql:
+    container_name: "postgresql"
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: dev_user
+      POSTGRES_PASSWORD: navarre2245
+
   adminer:
-    container_name: "mysql_adminer"
+    container_name: "adminer"
     image: adminer
     restart: always
     ports:
