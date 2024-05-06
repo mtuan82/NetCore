@@ -1,0 +1,235 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Frontend\\NetCore\\HangfireJob\\HangfireJob.csproj": {}
+  },
+  "projects": {
+    "D:\\Frontend\\NetCore\\Core\\Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Frontend\\NetCore\\Core\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "D:\\Frontend\\NetCore\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "D:\\Frontend\\NetCore\\Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.24.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.24.0, )"
+            },
+            "MongoDB.Driver.Core": {
+              "target": "Package",
+              "version": "[2.24.0, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "NetEscapades.Configuration.Validation": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.7.33, )"
+            },
+            "StackExchange.Redis.Extensions.Core": {
+              "target": "Package",
+              "version": "[10.2.0, )"
+            },
+            "StackExchange.Redis.Extensions.Newtonsoft": {
+              "target": "Package",
+              "version": "[10.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Frontend\\NetCore\\HangfireJob\\HangfireJob.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Frontend\\NetCore\\HangfireJob\\HangfireJob.csproj",
+        "projectName": "HangfireJob",
+        "projectPath": "D:\\Frontend\\NetCore\\HangfireJob\\HangfireJob.csproj",
+        "packagesPath": "C:\\Users\\Tuan\\.nuget\\packages\\",
+        "outputPath": "D:\\Frontend\\NetCore\\HangfireJob\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Tuan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Frontend\\NetCore\\Core\\Core.csproj": {
+                "projectPath": "D:\\Frontend\\NetCore\\Core\\Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.8.12, )"
+            },
+            "Hangfire.Redis.StackExchange": {
+              "target": "Package",
+              "version": "[1.9.3, )"
+            },
+            "Microsoft.DotNet.ILCompiler": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.3, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
+              "version": "[8.0.3, 8.0.3]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

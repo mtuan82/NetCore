@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "5P1yAd6aqH0wdWRgvcW0FU+zHR0mzYGlxNUqdtP+o48=",
+  "Source": "HangfireJob",
+  "BasePath": "_content/HangfireJob",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

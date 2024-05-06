@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "AutoMapper/13.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Options": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "AWSSDK.Core/3.7.100.14": {
         "type": "package",
         "compile": {
@@ -289,6 +305,24 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Microsoft.AspNetCore.Authorization/8.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Metadata": "8.0.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1",
+          "Microsoft.Extensions.Options": "8.0.2"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Authorization.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authorization.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/8.0.0": {
         "type": "package",
         "compile": {
@@ -333,6 +367,19 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Metadata/8.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
             "related": ".xml"
           }
         }
@@ -717,7 +764,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.1": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -731,6 +778,22 @@
         },
         "build": {
           "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyModel/3.1.6": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Json": "4.7.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0": {
@@ -872,10 +935,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/8.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -891,7 +954,7 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
-      "Microsoft.Extensions.Options/8.0.0": {
+      "Microsoft.Extensions.Options/8.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
@@ -1913,6 +1976,23 @@
           }
         }
       },
+      "RabbitMQ.Client/6.8.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Threading.Channels": "7.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/RabbitMQ.Client.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -1945,6 +2025,23 @@
           "runtimes/win-x86/native/sni.dll": {
             "assetType": "native",
             "rid": "win-x86"
+          }
+        }
+      },
+      "Scrutor/3.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
+          "Microsoft.Extensions.DependencyModel": "3.1.6"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Scrutor.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Scrutor.dll": {
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -2041,6 +2138,31 @@
         },
         "build": {
           "build/_._": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.Filters/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Microsoft.OpenApi": "1.3.1",
+          "Scrutor": "3.3.0",
+          "Swashbuckle.AspNetCore.Filters.Abstractions": "8.0.1",
+          "Swashbuckle.AspNetCore.SwaggerGen": "5.0.0"
+        },
+        "compile": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll": {}
+        }
+      },
+      "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll": {}
         }
       },
       "Swashbuckle.AspNetCore.Swagger/6.5.0": {
@@ -2712,6 +2834,22 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
+      "System.Threading.Channels/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/System.Threading.Channels.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/System.Threading.Channels.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "System.Threading.Tasks/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -2770,6 +2908,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "EntityFramework": "6.4.4",
+          "Microsoft.AspNetCore.Authorization": "8.0.4",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.Proxies": "8.0.3",
           "Microsoft.EntityFrameworkCore.Relational": "8.0.3",
@@ -2779,6 +2918,7 @@
           "MySql.EntityFrameworkCore": "8.0.0",
           "NetEscapades.Configuration.Validation": "2.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.2",
+          "RabbitMQ.Client": "6.8.1",
           "StackExchange.Redis": "2.7.33",
           "StackExchange.Redis.Extensions.Core": "10.2.0",
           "StackExchange.Redis.Extensions.Newtonsoft": "10.2.0"
@@ -2794,6 +2934,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "AutoMapper": "13.0.1",
           "Core": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.3",
           "Microsoft.AspNetCore.Authentication.OpenIdConnect": "8.0.3",
@@ -2802,7 +2943,8 @@
           "Microsoft.Identity.Web": "2.17.2",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",
           "StackExchange.Redis.Extensions.AspNetCore": "10.2.0",
-          "Swashbuckle.AspNetCore": "6.5.0"
+          "Swashbuckle.AspNetCore": "6.5.0",
+          "Swashbuckle.AspNetCore.Filters": "8.0.1"
         },
         "compile": {
           "bin/placeholder/NetCoreWebAPI.dll": {}
@@ -2817,6 +2959,21 @@
     }
   },
   "libraries": {
+    "AutoMapper/13.0.1": {
+      "sha512": "/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "type": "package",
+      "path": "automapper/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "automapper.13.0.1.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net6.0/AutoMapper.dll",
+        "lib/net6.0/AutoMapper.xml"
+      ]
+    },
     "AWSSDK.Core/3.7.100.14": {
       "sha512": "gnEgxBlk4PFEfdPE8Lkf4+D16MZFYSaW7/o6Wwe5e035QWUkTJX0Dn4LfTCdV5QSEL/fOFxu+yCAm55eIIBgog==",
       "type": "package",
@@ -3237,6 +3394,25 @@
         "microsoft.aspnetcore.authentication.openidconnect.nuspec"
       ]
     },
+    "Microsoft.AspNetCore.Authorization/8.0.4": {
+      "sha512": "dzYUHvqyavBiYVd5BZNAgV5rT+DC4HyIWPnbeYgxQNBYOFomvvwzPfidQf1Ld/HhkXhEj3tlzqNb4gy2P2ukUg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authorization/8.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net462/Microsoft.AspNetCore.Authorization.dll",
+        "lib/net462/Microsoft.AspNetCore.Authorization.xml",
+        "lib/net8.0/Microsoft.AspNetCore.Authorization.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Authorization.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.xml",
+        "microsoft.aspnetcore.authorization.8.0.4.nupkg.sha512",
+        "microsoft.aspnetcore.authorization.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/8.0.0": {
       "sha512": "buuMMCTxFcVkOkEftb2OafYxrveNGre9KJF4Oi1DkR4rxIj6oLam7Wq3g0Fp9hNVpJteKEPiupsxYnPrD/oUGA==",
       "type": "package",
@@ -3292,6 +3468,25 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
         "microsoft.aspnetcore.dataprotection.abstractions.8.0.0.nupkg.sha512",
         "microsoft.aspnetcore.dataprotection.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Metadata/8.0.4": {
+      "sha512": "TG3JhI7dkDCIoxZ3TL/5yptLYLg56w1f4jE8GSYnZXSso1xY5JKKCxObK+xKQJU5kZir30+QUGX1WpbC1kDcow==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.metadata/8.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net462/Microsoft.AspNetCore.Metadata.dll",
+        "lib/net462/Microsoft.AspNetCore.Metadata.xml",
+        "lib/net8.0/Microsoft.AspNetCore.Metadata.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Metadata.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.xml",
+        "microsoft.aspnetcore.metadata.8.0.4.nupkg.sha512",
+        "microsoft.aspnetcore.metadata.nuspec"
       ]
     },
     "Microsoft.AspNetCore.OpenApi/8.0.3": {
@@ -4123,10 +4318,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
-      "sha512": "cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.1": {
+      "sha512": "fGLiCRLMYd00JYpClraLjJTNKLmMJPnqxMaiRzEBIIvevlzxz33mXy39Lkd48hu1G+N21S7QpaO5ZzKsI6FRuA==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4150,9 +4345,31 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.DependencyModel/3.1.6": {
+      "sha512": "/UlDKULIVkLQYn1BaHcy/rc91ApDxJb7T75HcCbGdqwvxhnRQRKM2di1E70iCPMF9zsr6f4EgQTotBGxFIfXmw==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencymodel/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net451/Microsoft.Extensions.DependencyModel.dll",
+        "lib/net451/Microsoft.Extensions.DependencyModel.xml",
+        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.dll",
+        "lib/netstandard1.3/Microsoft.Extensions.DependencyModel.xml",
+        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll",
+        "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.xml",
+        "microsoft.extensions.dependencymodel.3.1.6.nupkg.sha512",
+        "microsoft.extensions.dependencymodel.nuspec"
       ]
     },
     "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0": {
@@ -4352,10 +4569,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
-      "sha512": "arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
+    "Microsoft.Extensions.Logging.Abstractions/8.0.1": {
+      "sha512": "RIFgaqoaINxkM2KTOw72dmilDmTrYA0ns2KW4lDz4gZ2+o6IQ894CzmdL3StM2oh7QQq44nCWiqKqc4qUI9Jmg==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/8.0.0",
+      "path": "microsoft.extensions.logging.abstractions/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4420,15 +4637,15 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.8.0.1.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Options/8.0.0": {
-      "sha512": "JOVOfqpnqlVLUzINQ2fox8evY2SKLYJ3BV8QDe/Jyp21u1T7r45x/R/5QdteURMR5r01GxeJSBBUOCOyaNXA3g==",
+    "Microsoft.Extensions.Options/8.0.2": {
+      "sha512": "dWGKvhFybsaZpGmzkGCbNNwBD1rVlWzrZKANLW/CcbFJpCEceMCGzT7zZwHOGBCbwM0SzBuceMj5HN1LKV1QqA==",
       "type": "package",
-      "path": "microsoft.extensions.options/8.0.0",
+      "path": "microsoft.extensions.options/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4467,7 +4684,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Options.xml",
-        "microsoft.extensions.options.8.0.0.nupkg.sha512",
+        "microsoft.extensions.options.8.0.2.nupkg.sha512",
         "microsoft.extensions.options.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5780,6 +5997,23 @@
         "pipelines.sockets.unofficial.nuspec"
       ]
     },
+    "RabbitMQ.Client/6.8.1": {
+      "sha512": "jNsmGgmCNw2S/NzskeN2ijtGywtH4Sk/G6jWUTD5sY9SrC27Xz6BsLIiB8hdsfjeyWCa4j4GvCIGkpE8wrjU1Q==",
+      "type": "package",
+      "path": "rabbitmq.client/6.8.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net462/RabbitMQ.Client.dll",
+        "lib/net462/RabbitMQ.Client.xml",
+        "lib/netstandard2.0/RabbitMQ.Client.dll",
+        "lib/netstandard2.0/RabbitMQ.Client.xml",
+        "rabbitmq.client.6.8.1.nupkg.sha512",
+        "rabbitmq.client.nuspec"
+      ]
+    },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "sha512": "9kyFSIdN3T0qjDQ2R0HRXYIhS3l5psBzQi6qqhdLz+SzFyEy4sVxNOke+yyYv8Cu8rPER12c3RDjLT8wF3WBYQ==",
       "type": "package",
@@ -5841,6 +6075,26 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Scrutor/3.3.0": {
+      "sha512": "BwqCnFzp2/Z+pq17iztxlIkR/ZANyPRR4PdE57WL1w/JW4AM/2imoxBWTL3+G+YXA46ce4s9OUgwWqTXYrtI8A==",
+      "type": "package",
+      "path": "scrutor/3.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Scrutor.dll",
+        "lib/net461/Scrutor.pdb",
+        "lib/net461/Scrutor.xml",
+        "lib/netcoreapp3.1/Scrutor.dll",
+        "lib/netcoreapp3.1/Scrutor.pdb",
+        "lib/netcoreapp3.1/Scrutor.xml",
+        "lib/netstandard2.0/Scrutor.dll",
+        "lib/netstandard2.0/Scrutor.pdb",
+        "lib/netstandard2.0/Scrutor.xml",
+        "scrutor.3.3.0.nupkg.sha512",
+        "scrutor.nuspec"
       ]
     },
     "SharpCompress/0.30.1": {
@@ -5967,6 +6221,36 @@
         "build/Swashbuckle.AspNetCore.props",
         "swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Filters/8.0.1": {
+      "sha512": "CQbJaQdelQGmgZR48FmITGYdfjXTG//hGpSEOwv3cLU5md8c6+YRY23KydX44IXRmHGAYwXrBlnuy98Daoa0zw==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.filters/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Swashbuckle.AspNetCore.Filters.dll",
+        "lib/netcoreapp3.1/Swashbuckle.AspNetCore.Filters.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Filters.dll",
+        "swashbuckle.aspnetcore.filters.8.0.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.filters.nuspec"
+      ]
+    },
+    "Swashbuckle.AspNetCore.Filters.Abstractions/8.0.1": {
+      "sha512": "HaMNzwz544xccQ0vn1jYK6UY9XZcgZRYYI4NaBAdow2oj0UycN6zdryoaaCa2S9D9Cu1qjsbdjp2FthYqM/wpQ==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.filters.abstractions/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll",
+        "lib/netcoreapp3.1/Swashbuckle.AspNetCore.Filters.Abstractions.dll",
+        "lib/netstandard2.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll",
+        "swashbuckle.aspnetcore.filters.abstractions.8.0.1.nupkg.sha512",
+        "swashbuckle.aspnetcore.filters.abstractions.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore.Swagger/6.5.0": {
@@ -7542,6 +7826,35 @@
         "lib/netstandard2.0/System.Text.Json.xml",
         "system.text.json.8.0.0.nupkg.sha512",
         "system.text.json.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Threading.Channels/7.0.0": {
+      "sha512": "qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
+      "type": "package",
+      "path": "system.threading.channels/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Threading.Channels.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Threading.Channels.targets",
+        "lib/net462/System.Threading.Channels.dll",
+        "lib/net462/System.Threading.Channels.xml",
+        "lib/net6.0/System.Threading.Channels.dll",
+        "lib/net6.0/System.Threading.Channels.xml",
+        "lib/net7.0/System.Threading.Channels.dll",
+        "lib/net7.0/System.Threading.Channels.xml",
+        "lib/netstandard2.0/System.Threading.Channels.dll",
+        "lib/netstandard2.0/System.Threading.Channels.xml",
+        "lib/netstandard2.1/System.Threading.Channels.dll",
+        "lib/netstandard2.1/System.Threading.Channels.xml",
+        "system.threading.channels.7.0.0.nupkg.sha512",
+        "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },

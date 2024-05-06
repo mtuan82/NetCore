@@ -15,6 +15,7 @@ namespace Core.Configurations
         public PostgreSQLSettings PostgresqlDB { get; set; }
         public RedisSettings Redis { get; set; }
         public RabbitMQSettings RabbitMQ { get; set; }
+        public HangfireSettings Hangfire { get; set; }
 
         public void SetupEnv()
         {
@@ -67,6 +68,10 @@ namespace Core.Configurations
                 Port = Configuration["RabbitMQ:Port"] == null ? 6379 : int.Parse(Configuration["RabbitMQ:Port"]),
                 UserName = Configuration["RabbitMQ:UserName"] == null ? "" : Configuration["RabbitMQ:UserName"],
                 Password = Configuration["RabbitMQ:Password"] == null ? "" : Configuration["RabbitMQ:Password"]
+            };
+            Hangfire = new HangfireSettings()
+            {
+                Cron = Configuration["Hangfire:Cron"] ?? ""
             };
         }
 

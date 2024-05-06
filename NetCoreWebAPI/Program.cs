@@ -1,7 +1,4 @@
 using Core.Configurations;
-using Core.Providers.MSSQL;
-using Core.Providers.PostgreSQL;
-using Microsoft.EntityFrameworkCore;
 using NetCoreWebAPI.Configurations;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -19,11 +16,7 @@ ConfigureMongoDB.SetupDatabase(builder.Services, builder.Configuration);
 ConfigureMySQL.SetupDatabase(builder.Services, env.MysqlDB);
 
 //MSSQL Provider
-builder.Services.AddDbContext<MSSQLProvider>(option =>
-{
-    option.UseLazyLoadingProxies()
-            .UseSqlServer(env.MssqlDB.ConnectionString);
-},ServiceLifetime.Scoped);
+ConfigureMSSQL.SetupDatabase(builder.Services, env.MssqlDB);
 
 //PostgreSQL Provider
 ConfigurePostgreSQL.SetupDatabase(builder.Services, env.PostgresqlDB);
