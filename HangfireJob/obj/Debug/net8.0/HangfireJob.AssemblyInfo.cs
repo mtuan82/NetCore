@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HangfireJob")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acc60b3265c5a2f3c8da801ff1df995a457f54c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e228cf8a54481b07f74831f11107fb7d2d701e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("HangfireJob")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HangfireJob")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
