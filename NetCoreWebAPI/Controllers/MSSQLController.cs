@@ -28,7 +28,7 @@ namespace NetCoreWebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateStore([FromBody] Store value)
+        public async Task<IActionResult> CreateStore([FromBody] Order value)
         {
             if (value == null)
             {
@@ -40,7 +40,7 @@ namespace NetCoreWebAPI.Controllers
 
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] Store value)
+        public async Task<IActionResult> Put([FromBody] Order value)
         {
             if (value == null)
             {

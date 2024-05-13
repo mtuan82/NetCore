@@ -1,11 +1,14 @@
 using Core.Configurations;
 using NetCoreWebAPI.Configurations;
+using NetCoreWebAPI.MiddleWare;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var env = new AppSettings(builder.Configuration);
 env.SetupEnv();
+
+//ConfigureEncryption.SetupEncryption(builder.Services, builder.Configuration);
 
 ConfigureAuthentication.AddAuthentication(builder.Services, env.Identity);
 
@@ -51,6 +54,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//app.UseMiddleware<Encryption>();
 
 app.UseAuthentication();
 

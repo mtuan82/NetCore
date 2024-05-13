@@ -33,7 +33,7 @@ namespace IdentityCore.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public async Task<IActionResult> Register([FromBody]RegisterModel model)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace IdentityCore.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login([FromBody]LoginModel model)
         {
             if (model is null)
             {

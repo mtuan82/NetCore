@@ -8,7 +8,7 @@ namespace Core.Providers.MSSQL
         public MSSQLContext() { }
         public MSSQLContext(DbContextOptions<MSSQLContext> options) : base(options) { }
 
-        public virtual DbSet<Store> Store { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

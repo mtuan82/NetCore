@@ -16,18 +16,18 @@ namespace NetCoreWebAPI.Services.MSSQL
             _mapper = mapper;
         }
 
-        public void CreateStore(Store data)
+        public void CreateStore(Order data)
         {
-            _dbcontext.Add<Store>(data);
+            _dbcontext.Add<Order>(data);
             _dbcontext.SaveChanges();
         }
 
-        public bool UpdateStore(Store data)
+        public bool UpdateStore(Order data)
         {
-            var customer = _dbcontext.Store.FirstOrDefault(x => x.Id == data.Id);
+            var customer = _dbcontext.Order.FirstOrDefault(x => x.Id == data.Id);
             if (customer != null)
             {
-                _dbcontext.Update<Store>(_mapper.Map(data, customer));
+                _dbcontext.Update<Order>(_mapper.Map(data, customer));
                 _dbcontext.SaveChanges();
                 return true;
             }
@@ -37,22 +37,22 @@ namespace NetCoreWebAPI.Services.MSSQL
             }
         }
 
-        public Store GetStoreById(int id)
+        public Order GetStoreById(int id)
         {
-            return _dbcontext.Store.FirstOrDefault(x => x.Id == id);
+            return _dbcontext.Order.FirstOrDefault(x => x.Id == id);
         }
 
-        public List<Customer> GetStoresByName(string name)
+        public List<Order> GetStoresByName(string name)
         {
-            return _dbcontext.Store.Where(x => x.Name.Contains(name)).ToList();
+            return _dbcontext.Order.Where(x => x.Name.Contains(name)).ToList();
         }
 
         public bool DeleteStore(int id)
         {
-            var customer = _dbcontext.Store.FirstOrDefault(x => x.Id == id);
+            var customer = _dbcontext.Order.FirstOrDefault(x => x.Id == id);
             if (customer != null)
             {
-                _dbcontext.Store.Remove(customer);
+                _dbcontext.Order.Remove(customer);
                 _dbcontext.SaveChanges();
                 return true;
             }

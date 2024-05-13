@@ -1,5 +1,6 @@
 using IdentityCore.Configuration;
 using IdentityCore.Identity;
+using IdentityCore.MiddleWare;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +10,9 @@ using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+ConfigureEncryption.SetupEncryption(builder.Services, builder.Configuration);
+
 var connectionString = builder.Configuration.GetConnectionString("IdentityCoreContextConnection") ?? throw new InvalidOperationException("Connection string 'IdentityCoreContextConnection' not found.");
 // Add services to the container.
 var policy = new CorsPolicyBuilder()
@@ -72,6 +76,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsEnvironment("Docker"))
 
 app.UseCors("Cor");
 app.UseHttpsRedirection();
+app.UseMiddleware<Encryption>();
 app.UseAuthentication();
 app.UseAuthorization();
 

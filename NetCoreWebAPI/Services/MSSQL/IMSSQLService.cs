@@ -4,10 +4,10 @@ namespace NetCoreWebAPI.Services.MSSQL
 {
     public interface IMSSQLService
     {
-        void CreateStore(Store data);
-        bool UpdateStore(Store data);
-        Store GetStoreById(int id);
-        List<Store> GetStoresByName(string name);
+        void CreateStore(Order data);
+        bool UpdateStore(Order data);
+        Order GetStoreById(int id);
+        List<Order> GetStoresByName(string name);
         bool DeleteStore(int id);
     }
 }

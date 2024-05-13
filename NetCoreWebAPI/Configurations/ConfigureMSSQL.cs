@@ -22,7 +22,7 @@ namespace NetCoreWebAPI.Configurations
             //mapping enity
             services.AddAutoMapper(c =>
             {
-                c.CreateMap<Store, Store>();
+                c.CreateMap<Order, Order>();
             });
         }
     }
