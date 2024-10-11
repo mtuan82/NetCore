@@ -1,5 +1,4 @@
 ﻿using Core.Enum;
-using Core.Providers.PostgreSQL.Entity;
 using IdentityCore.Identity;
 using IdentityCore.Model;
 using Microsoft.AspNetCore.Authorization;
